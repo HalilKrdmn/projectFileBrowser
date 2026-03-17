@@ -1,13 +1,10 @@
-//
-// Created by halil on 3/17/26.
-//
+#pragma once
 
-#ifndef PROJECTFILEBROWSER_TOOLBARPANEL_H
-#define PROJECTFILEBROWSER_TOOLBARPANEL_H
+#include "gui/core/BasePanel.h"
 
+class ToolbarPanel : public BasePanel {
+public:
+    explicit ToolbarPanel(MainWindow* manager);
 
-class ToolbarPanel {
+    void Draw(float x, float y, float width, float height) override;
 };
-
-
-#endif //PROJECTFILEBROWSER_TOOLBARPANEL_H

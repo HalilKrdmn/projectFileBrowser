@@ -1,8 +1,10 @@
-//
-// Created by halil on 3/17/26.
-//
+#pragma once
 
-#ifndef PROJECTFILEBROWSER_SIDEBARPANEL_H
-#define PROJECTFILEBROWSER_SIDEBARPANEL_H
+#include "gui/core/BasePanel.h"
 
-#endif //PROJECTFILEBROWSER_SIDEBARPANEL_H
+class SidebarPanel : public BasePanel {
+public:
+    explicit SidebarPanel(MainWindow* manager);
+
+    void Draw(float x, float y, float width, float height) override;
+};
