@@ -1,0 +1,13 @@
+//
+// Created by halil on 3/17/26.
+//
+
+#ifndef PROJECTFILEBROWSER_TOOLBARPANEL_H
+#define PROJECTFILEBROWSER_TOOLBARPANEL_H
+
+
+class ToolbarPanel {
+};
+
+
+#endif //PROJECTFILEBROWSER_TOOLBARPANEL_H

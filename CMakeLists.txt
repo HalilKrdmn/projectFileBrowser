@@ -19,6 +19,11 @@ set(GUI_CORE_SOURCES
 set(GUI_MAIN_SCREENS_SOURCES
         src/gui/screens/main/MainScreen.cpp
         include/gui/screens/main/MainScreen.h
+
+        src/gui/screens/main/panels/FileInfoPanel.cpp
+        include/gui/screens/main/panels/FileInfoPanel.h
+        src/gui/screens/main/panels/FileListPanel.cpp
+        include/gui/screens/main/panels/FileListPanel.h
 )
 
 add_executable(projectFileBrowser

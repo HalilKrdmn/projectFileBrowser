@@ -9,7 +9,7 @@ public:
 
     virtual void Draw() = 0;
 
-    MainWindow* GetManager() const { return m_manager; }
+    [[nodiscard]] MainWindow* GetManager() const { return m_manager; }
 
 protected:
     MainWindow* m_manager;
