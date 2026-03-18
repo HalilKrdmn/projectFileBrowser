@@ -1,4 +1,4 @@
-#include "gui/screens/main/panels/ToolbarPanel.h"
+#include "gui/panels/ToolbarPanel.h"
 
 #include "imgui.h"
 

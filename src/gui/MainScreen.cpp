@@ -1,4 +1,4 @@
-#include "gui/screens/main/MainScreen.h"
+#include "../../include/gui/MainScreen.h"
 
 #include "gui/Theme.h"
 
@@ -7,9 +7,9 @@
 MainScreen::MainScreen(MainWindow* manager)
     : BaseScreen(manager){
     m_toolbar = new ToolbarPanel(manager);
-    m_fileInfo = new FileInfoPanel(manager);
-    m_fileList= new FileListPanel(manager);
+    m_content= new ContentPanel(manager);
     m_sidebar= new SidebarPanel(manager);
+    m_bottombar = new BottombarPanel(manager);
 }
 
 void MainScreen::Draw() {
@@ -18,13 +18,13 @@ void MainScreen::Draw() {
     ImGui::GetBackgroundDrawList()->AddRectFilled(
         viewport->WorkPos,
         ImVec2(viewport->WorkPos.x + viewport->WorkSize.x,
-               viewport->WorkPos.y + viewport->WorkSize.y),
+                     viewport->WorkPos.y + viewport->WorkSize.y),
         ImGui::GetColorU32(Theme::BG_CONTENT)
     );
 
-    float toolbarH = 30.0f;
-    float sidebarW = viewport->WorkSize.x / 5.0f;
-    float sidebarH = viewport->WorkSize.y / 3.0f;
+    constexpr float toolbarH = 30.0f;
+    constexpr float bottombarH = 15.0f;
+    const float sidebarW = viewport->WorkSize.x / 8.0f;
 
     m_toolbar->Draw(
         viewport->WorkPos.x,
@@ -32,25 +32,22 @@ void MainScreen::Draw() {
         viewport->WorkSize.x,
         toolbarH
     );
-
     m_sidebar->Draw(
         viewport->WorkPos.x,
         viewport->WorkPos.y + toolbarH,
         sidebarW,
-        viewport->WorkSize.y - toolbarH - sidebarH
+        viewport->WorkSize.y - toolbarH
     );
-
-    m_fileInfo->Draw(
-        viewport->WorkPos.x,
-        viewport->WorkPos.y + viewport->WorkSize.y - sidebarH,
-        sidebarW,
-        sidebarH
-    );
-
-    m_fileList->Draw(
+    m_content->Draw(
         viewport->WorkPos.x + sidebarW,
         viewport->WorkPos.y + toolbarH,
         viewport->WorkSize.x - sidebarW,
-        viewport->WorkSize.y - toolbarH
+        viewport->WorkSize.y - toolbarH - bottombarH
+    );
+    m_bottombar->Draw(
+        viewport->WorkPos.x + sidebarW,
+        viewport->WorkPos.y + viewport->WorkSize.y - bottombarH,
+        viewport->WorkSize.x - sidebarW,
+        bottombarH
     );
 }

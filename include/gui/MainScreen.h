@@ -2,8 +2,8 @@
 
 #include "gui/core/BaseScreen.h"
 
-#include "panels/FileInfoPanel.h"
-#include "panels/FileListPanel.h"
+#include "panels/BottombarPanel.h"
+#include "panels/ContentPanel.h"
 #include "panels/SidebarPanel.h"
 #include "panels/ToolbarPanel.h"
 
@@ -15,7 +15,7 @@ public:
 
 private:
     ToolbarPanel* m_toolbar;
-    FileInfoPanel* m_fileInfo;
-    FileListPanel* m_fileList;
+    ContentPanel* m_content;
     SidebarPanel* m_sidebar;
+    BottombarPanel* m_bottombar;
 };

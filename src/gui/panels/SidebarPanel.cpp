@@ -1,4 +1,4 @@
-#include "gui/screens/main/panels/SidebarPanel.h"
+#include "gui/panels/SidebarPanel.h"
 
 #include "imgui.h"
 

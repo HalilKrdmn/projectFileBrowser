@@ -2,9 +2,9 @@
 
 #include "gui/core/BasePanel.h"
 
-class FileInfoPanel : public BasePanel {
+class BottombarPanel : public BasePanel {
 public:
-    explicit FileInfoPanel(MainWindow* manager);
+    explicit BottombarPanel(MainWindow* manager);
 
     void Draw(float x, float y, float width, float height) override;
 };

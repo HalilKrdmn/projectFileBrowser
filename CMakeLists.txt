@@ -10,30 +10,35 @@ set(CORE_SOURCES
         src/main.cpp
 )
 
+set(GUI_SOURCES
+        src/gui/MainScreen.cpp
+        include/gui/MainScreen.h
+        include/gui/Theme.h
+)
+
 set(GUI_CORE_SOURCES
         src/gui/core/MainWindow.cpp
         include/gui/core/MainWindow.h
         include/gui/core/BaseScreen.h
+        include/gui/core/BasePanel.h
 )
 
-set(GUI_MAIN_SCREENS_SOURCES
-        src/gui/screens/main/MainScreen.cpp
-        include/gui/screens/main/MainScreen.h
-
-        src/gui/screens/main/panels/FileInfoPanel.cpp
-        include/gui/screens/main/panels/FileInfoPanel.h
-        src/gui/screens/main/panels/FileListPanel.cpp
-        include/gui/screens/main/panels/FileListPanel.h
-        src/gui/screens/main/panels/SidebarPanel.cpp
-        include/gui/screens/main/panels/SidebarPanel.h
-        src/gui/screens/main/panels/ToolbarPanel.cpp
-        include/gui/screens/main/panels/ToolbarPanel.h
+set(GUI_PANELS_SOURCES
+        src/gui/panels/BottombarPanel.cpp
+        include/gui/panels/BottombarPanel.h
+        src/gui/panels/ContentPanel.cpp
+        include/gui/panels/ContentPanel.h
+        src/gui/panels/SidebarPanel.cpp
+        include/gui/panels/SidebarPanel.h
+        src/gui/panels/ToolbarPanel.cpp
+        include/gui/panels/ToolbarPanel.h
 )
 
 add_executable(projectFileBrowser
         ${CORE_SOURCES}
+        ${GUI_SOURCES}
         ${GUI_CORE_SOURCES}
-        ${GUI_MAIN_SCREENS_SOURCES}
+        ${GUI_PANELS_SOURCES}
 )
 
 target_include_directories(projectFileBrowser PRIVATE

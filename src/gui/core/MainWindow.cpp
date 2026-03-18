@@ -1,7 +1,7 @@
 #include "gui/core/MainWindow.h"
 
 #include "gui/Theme.h"
-#include "gui/screens/main/MainScreen.h"
+#include "gui/MainScreen.h"
 
 #include <cstdio>
 #include <GLFW/glfw3.h>
@@ -16,8 +16,7 @@ static void error_callback([[maybe_unused]] int error, const char* description) 
 }
 
 MainWindow::MainWindow(const int width, const int height, const char* title) 
-    : window(nullptr)
-      , m_currentState(ApplicationState::MAIN) {
+    : window(nullptr) {
     
     // GLFW error callback
     glfwSetErrorCallback(error_callback);
@@ -77,15 +76,15 @@ MainWindow::MainWindow(const int width, const int height, const char* title)
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 330");
 
-    // Create first screen
-    SetApplicationState(ApplicationState::MAIN);
+    // Start MainScreen
+    m_mainScreen = new MainScreen(this);
 
     printf("MainWindow initialized successfully\n");
 }
 
 MainWindow::~MainWindow() {
-    // Screen cleanup
-    // if (m_mainScreen) delete m_mainScreen;
+    delete m_mainScreen;
+    m_mainScreen = nullptr;
 
     // ImGui cleanup
     ImGui_ImplOpenGL3_Shutdown();
@@ -93,9 +92,7 @@ MainWindow::~MainWindow() {
     ImGui::DestroyContext();
 
     // GLFW cleanup
-    if (window) {
-        glfwDestroyWindow(window);
-    }
+    if (window) {glfwDestroyWindow(window); }
     glfwTerminate();
     
     printf("[MainWindow] MainWindow destroyed\n");
@@ -126,9 +123,8 @@ int MainWindow::Run() const {
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Draw current screen
-        if (m_currentScreen != nullptr) {
-            m_currentScreen->Draw();
-        }
+        if (m_mainScreen != nullptr)
+            m_mainScreen->Draw();
 
         // Render ImGui
         ImGui::Render();
@@ -140,24 +136,4 @@ int MainWindow::Run() const {
 
     printf("[MainWindow] Main loop ended\n");
     return 0;
-}
-
-void MainWindow::SetApplicationState(const ApplicationState newState) {
-    m_currentState = newState;
-
-    switch (newState) {
-        case ApplicationState::MAIN:
-            if (!m_mainScreen)
-                m_mainScreen = new MainScreen(this);
-            m_currentScreen = m_mainScreen;
-            break;
-
-        default:
-            if (!m_mainScreen)
-                m_mainScreen = new MainScreen(this);
-            m_currentScreen = m_mainScreen;
-            break;
-    }
-
-    printf("Application state changed to: %d\n", static_cast<int>(newState));
 }

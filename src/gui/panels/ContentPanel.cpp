@@ -1,11 +1,11 @@
-#include "gui/screens/main/panels/FileListPanel.h"
+#include "gui/panels/ContentPanel.h"
 
 #include "imgui.h"
 
-FileListPanel::FileListPanel(MainWindow *manager) {
+ContentPanel::ContentPanel(MainWindow *manager) {
 }
 
-void FileListPanel::Draw(float x, float y, float width, float height) {
+void ContentPanel::Draw(float x, float y, float width, float height) {
     ImGui::SetNextWindowPos({x, y});
     ImGui::SetNextWindowSize({width, height});
     ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.1f, 1.0f, 0.3f));
