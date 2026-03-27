@@ -3,7 +3,7 @@
 #include "gui/core/BaseScreen.h"
 
 #include "panels/BottombarPanel.h"
-#include "panels/ContentPanel.h"
+#include "panels/content/ContentPanel.h"
 #include "panels/SidebarPanel.h"
 #include "panels/ToolbarPanel.h"
 

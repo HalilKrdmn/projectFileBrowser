@@ -23,11 +23,16 @@ set(GUI_CORE_SOURCES
         include/gui/core/BasePanel.h
 )
 
+set(GUI_PANELS_CONTENT_SOURCES
+        src/gui/panels/content/ContentPanel.cpp
+        include/gui/panels/content/ContentPanel.h
+        src/gui/panels/content/pane/FileBrowser.cpp
+        include/gui/panels/content/pane/FileBrowser.h
+)
+
 set(GUI_PANELS_SOURCES
         src/gui/panels/BottombarPanel.cpp
         include/gui/panels/BottombarPanel.h
-        src/gui/panels/ContentPanel.cpp
-        include/gui/panels/ContentPanel.h
         src/gui/panels/SidebarPanel.cpp
         include/gui/panels/SidebarPanel.h
         src/gui/panels/ToolbarPanel.cpp
@@ -38,6 +43,7 @@ add_executable(projectFileBrowser
         ${CORE_SOURCES}
         ${GUI_SOURCES}
         ${GUI_CORE_SOURCES}
+        ${GUI_PANELS_CONTENT_SOURCES}
         ${GUI_PANELS_SOURCES}
 )
 

@@ -75,7 +75,7 @@ struct Theme {
     // ── Apply the Global ImGui style ─────────────────────────────────────────
     static void Apply() {
         ImGuiStyle& s = ImGui::GetStyle();
-        s.WindowRounding    = 6.0f;
+        s.WindowRounding    = 0.0f;
         s.FrameRounding     = 4.0f;
         s.PopupRounding     = 4.0f;
         s.ScrollbarRounding = 4.0f;
